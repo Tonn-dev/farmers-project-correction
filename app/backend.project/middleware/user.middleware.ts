@@ -1,8 +1,5 @@
 import { NextFunction, Request,Response } from 'express';
-import { User } from '../models/models'; // Adjust the import path as necessary
 import jwt from 'jsonwebtoken';
-import { register } from '../controllers/user.controllers';
-import { login } from '../controllers/user.controllers';
 
 function authenticate(req:Request,res:Response,next:NextFunction){
     const token=req.headers.authorization?.split(" ")[1];
