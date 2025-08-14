@@ -71,6 +71,8 @@ const Profile = sequelize.define('Profile', {
   location: DataTypes.STRING,
   contact: DataTypes.STRING,
   farm_name: DataTypes.STRING ,// only for farmers (nullable)
+  latitude: { type: DataTypes.DECIMAL(10, 8), allowNull: true },
+  longitude: { type: DataTypes.DECIMAL(11, 8), allowNull: true }
 },
 {
  timestamps: false ,
@@ -92,7 +94,9 @@ const Good = sequelize.define('Good', {
   category: DataTypes.STRING,
   quantity: DataTypes.INTEGER,
   status: DataTypes.ENUM('available', 'sold_out', 'pending', 'discontinued'),
-  price: DataTypes.DECIMAL(7, 2)
+  price: DataTypes.DECIMAL(7, 2),
+  latitude: { type: DataTypes.DECIMAL(10, 8), allowNull: true },
+  longitude: { type: DataTypes.DECIMAL(11, 8), allowNull: true }
 });
 
 Profile.hasMany(Good, { foreignKey: 'farmer_profile_id' });
