@@ -1,0 +1,27 @@
+# Force LF line endings for code files
+*.js text eol=lf
+*.ts text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+* text=auto
+
+
+# Keep shell scripts with LF
+*.sh text eol=lf
+
+# Windows batch files can stay CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Do not modify images/binaries
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+
+# Database migrations or SQL files -> LF
+*.sql text eol=lf
