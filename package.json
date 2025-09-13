@@ -16,7 +16,7 @@
   },
   "scripts": {
     "dev": "nodemon --watch app/backend.project --ext ts,js --exec ts-node app/backend.project/app/server.ts",
-  "build": "tsc",
+    "build": "tsc",
   "start": "node dist/server.js"
-  }
+  }    
 }

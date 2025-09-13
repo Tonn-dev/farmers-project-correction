@@ -91,6 +91,8 @@ const Good = sequelize.define('Good', {
     allowNull: false
   },
   name: DataTypes.STRING,
+  good_url: DataTypes.STRING,
+  description: DataTypes.STRING(500),
   category: DataTypes.STRING,
   quantity: DataTypes.INTEGER,
   status: DataTypes.ENUM('available', 'sold_out', 'pending', 'discontinued'),
