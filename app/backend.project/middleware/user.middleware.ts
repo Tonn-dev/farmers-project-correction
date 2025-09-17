@@ -7,7 +7,7 @@ function authenticate(req:Request,res:Response,next:NextFunction){
 
         try{
             const decoded=jwt.verify(token,process.env.JWT_SECRET as string);
-            (req as any).user=decoded;
+            (req as any).user=decoded;//this is where we attach the user info to the request object
             next();
         }catch(error){
             console.error('Authentication error:', error);
