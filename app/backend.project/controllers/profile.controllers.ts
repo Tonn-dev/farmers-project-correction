@@ -6,13 +6,15 @@ import { Request, Response } from 'express';
 
 export const createProfile = async (req: Request, res: Response) => {
     try {
-        //secure : take user_id from the token payload instead of request body
-
-        const userId= (req as any) .user.id; // Assuming the token payload contains the user ID
+        //taking userId from Jwt middleware, not body
+        const userId= (req as any).user?.id; // Assuming the token payload contains the user ID
+        if (!userId) {
+            return res.status(401).json({ error: 'Unauthorize: missing user Id' });
+        }
         const { name, address, contact,farm_name,latitude,longitude} = req.body;
         
         // Check if profile already exists for the user
-        const existingProfile = await Profile.findOne({ where: { userId } });
+        const existingProfile = await Profile.findOne({ where: { user_id:userId } });
         if (existingProfile) {
             return res.status(400).json({ error: 'Profile already exists for this user' });
         }
