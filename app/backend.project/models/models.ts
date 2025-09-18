@@ -46,6 +46,7 @@ freezeTableName: true} // This will prevent Sequelize from pluralizing table nam
 const User = sequelize.define('User', {
   user_id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   email: { type: DataTypes.STRING, unique: true, allowNull: false },
+  pendingEmail: { type: DataTypes.STRING, unique: true, allowNull: true }, // For email updates
   password: { type: DataTypes.STRING, allowNull: false },
   role_id: {
     type: DataTypes.INTEGER,
@@ -219,4 +220,4 @@ export {
 // Sync the model with the database
 User.sync({ alter: true }) // This will update the table structure if it has changed
 Role.sync({ alter: true })
-
+Profile.sync({ alter: true })
