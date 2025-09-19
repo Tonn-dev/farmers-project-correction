@@ -29,7 +29,7 @@ export const login = async (req: Request, res: Response) => {
         if(!user||!(await bcrypt.compare(password, (user as any).password))) {
             return res.status(404).json({ error: 'User not found' });
         }
-        const token = jwt.sign({ userId: (user as any).user_id, role: (user as any).role_id }, process.env.JWT_SECRET as string, { expiresIn: '1h' });
+        const token = jwt.sign({ id: (user as any).user_id, role: (user as any).role_id }, process.env.JWT_SECRET as string, { expiresIn: '1h' });
 
         //return token in response
         res.status(200).json({ message: 'Login successful', token, userId: (user as any).user_id, role: (user as any).Role.role_name });

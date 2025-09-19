@@ -11,15 +11,20 @@ export const createProfile = async (req: Request, res: Response) => {
         if (!userId) {
             return res.status(401).json({ error: 'Unauthorize: missing user Id' });
         }
-        const { name, address, contact,farm_name,latitude,longitude} = req.body;
-        
+        console.log('User ID from middleware:', userId); // Debug log
+
+        const { type, address, contact,farm_name,latitude,longitude} = req.body;
+        if (!req.body.userId || !req.body.address || !req.body.contact) {
+            return res.status(400).json({ error: 'userId, address, and contact are required' });
+        }
+
         // Check if profile already exists for the user
         const existingProfile = await Profile.findOne({ where: { user_id:userId } });
         if (existingProfile) {
             return res.status(400).json({ error: 'Profile already exists for this user' });
         }
         
-        const newProfile = await Profile.create({ user_id:userId, name, address, contact,farm_name,latitude,longitude });
+        const newProfile = await Profile.create({ user_id:userId,type, address, contact,farm_name,latitude,longitude });
         res.status(201).json({ message: 'Profile created successfully', profileId: newProfile.get('profile_id') });
     } catch (error) {
         console.error('Error creating profile:', error);

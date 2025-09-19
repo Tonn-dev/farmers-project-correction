@@ -1,4 +1,4 @@
-//users can update their password and email or even delete their account
+//users can update their password and email 
 import { User } from '../models/models';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';

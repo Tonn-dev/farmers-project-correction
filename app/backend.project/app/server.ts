@@ -2,17 +2,21 @@ import express from 'express';
 import dotenv from "dotenv"
 import sequelize from "../models/index"// import sequelize instance
 dotenv.config();
-import router from '../routes/user.routes'; // Adjust the import path as necessary
-import routerProfile from '../routes/profile.routes';
+import userRouter from '../routes/user.routes'; // Adjust the import path as necessary
+import profileRouter from '../routes/profile.routes';
+// Use profile routes
 
 import { Role } from '../models/models';
 import { authenticate } from '../middleware/user.middleware';
+
+
 const app = express();
 const port=process.env.PORT  ||3000;
 
 app.use(express.json());
-app.use('/api',authenticate, routerProfile);
-app.use('/api', router);
+app.use(express.urlencoded({ extended: true }));
+app.use('/api', userRouter);
+app.use('/api/profile',  profileRouter);
 app.use((req, res) => {
   res.status(404).json({ error:`message:${req.method} ${req.originalUrl}` });
 });

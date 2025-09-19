@@ -68,7 +68,9 @@ const Profile = sequelize.define('Profile', {
     type: DataTypes.ENUM('customer', 'farmer', 'admin', 'officer'),
     allowNull: false
   },
+  name:  DataTypes.STRING, 
   region: DataTypes.STRING,
+  address:DataTypes.STRING,
   location: DataTypes.STRING,
   contact: DataTypes.STRING,
   farm_name: DataTypes.STRING ,// only for farmers (nullable)
