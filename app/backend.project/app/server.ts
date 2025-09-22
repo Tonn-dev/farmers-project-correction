@@ -7,7 +7,7 @@ import profileRouter from '../routes/profile.routes';
 // Use profile routes
 
 import { Role } from '../models/models';
-import { authenticate } from '../middleware/user.middleware';
+
 
 
 const app = express();

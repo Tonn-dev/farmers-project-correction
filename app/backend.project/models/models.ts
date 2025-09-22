@@ -93,6 +93,7 @@ const Good = sequelize.define('Good', {
     references: { model: Profile, key: 'profile_id' },
     allowNull: false
   },
+  
   name: DataTypes.STRING,
   good_url: DataTypes.STRING,
   description: DataTypes.STRING(500),

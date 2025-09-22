@@ -38,6 +38,14 @@ export const login = async (req: Request, res: Response) => {
         return res.status(500).json({ error: 'Internal Server Error while login' });
     }
 }
+//log out user by invalidating token on client side
+export const logout = async (req: Request, res: Response) => {
+    // In a stateless JWT setup, logout is handled on the client side by deleting the token.
+    res.status(200).json({ message: 'Logout successful. Please delete the token on client side.' });
+}
+
+//Get all users - for admin use only  
+
 export const getAllUsers = async (req: Request, res: Response) => {
     try {
         const users = await User.findAll();

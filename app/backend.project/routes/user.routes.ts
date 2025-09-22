@@ -3,6 +3,7 @@ import { register, login, getAllUsers } from '../controllers/user.controllers';
 import { authenticate, authorize } from '../middleware/user.middleware';
 import { requestEmailChange,verifyEmailChange } from '../services/user.services';
 import { updatePassword } from '../services/user.services';
+import { logout } from '../controllers/user.controllers';
 const router=express.Router();
 
 // User registration route
@@ -10,7 +11,7 @@ router.post('/register', register);
 // User login route
 router.post('/login', login);
 //AUTHENTICATION AND AUTHORIZATION routes
-router.get('/', authenticate, authorize(['admin']), getAllUsers);
+router.get('/getUsers', authenticate, authorize(['admin']), getAllUsers);
 // Route to request email change
 router .post('/request-email-change', async (req, res) => {
     const {userId,currentPassword,newEmail} = req.body; // Assuming the request body contains the user ID,currentPassword,newEmail  
@@ -38,6 +39,8 @@ router.post('/update-password',async(req,res)=>{
         res.status(500).json({message:"Internal Server Error"});
     }
 })
+// Route to log out user
+router.post('/logout', authenticate,logout);
 // Export the router to be used in the main app
 export default router;
      
