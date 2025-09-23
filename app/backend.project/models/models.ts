@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 import { Sequelize,DataTypes,Op } from 'sequelize';
+import { inspect } from 'util';
 // Ensure you have the correct path to your .env file
 
 
@@ -224,3 +225,5 @@ export {
 User.sync({ alter: true }) // This will update the table structure if it has changed
 Role.sync({ alter: true })
 Profile.sync({ alter: true })
+Good.sync({ alter: true })
+Inspect.sync({ alter: true })
