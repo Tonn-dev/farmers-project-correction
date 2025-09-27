@@ -1,30 +1,6 @@
-// File: app/backend.project/models/models.ts
-import dotenv from 'dotenv';
-// dotenv.config({ path: __dirname + '/../../.env' }); // ✅ Adjust based on your folder depth
-
-dotenv.config();
-import { Sequelize,DataTypes,Op } from 'sequelize';
-import { inspect } from 'util';
-// Ensure you have the correct path to your .env file
-
-
-// File: project/models.ts
-// --- a/file:///c%3A/Users/user/Desktop/myProject_sequelize/project/models.ts
-
-
-// Use your actual MySQL database name here
-const sequelize = new Sequelize(
-
-{
-    database:process.env.DB_NAME! ,
-    username:process.env.DB_USER !,
-    password:process.env.DB_PASSWORD!,
-    host: process.env.DB_HOST!,
-    port: Number(process.env.DB_PORT!), 
-    dialect: 'postgres',
-  }
-);
-
+import sequelize from '../models/index' // import sequelize instance;
+import { DataTypes } from 'sequelize';
+// Test the database connection
 
 sequelize.authenticate()
 .then(() => {

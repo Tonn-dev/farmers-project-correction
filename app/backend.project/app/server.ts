@@ -1,7 +1,5 @@
 import express from 'express';
-import dotenv from "dotenv"
-import sequelize from "../models/index"// import sequelize instance
-dotenv.config();
+import sequelize from '../models/index'// import sequelize instance;
 import userRouter from '../routes/user.routes'; // Adjust the import path as necessary
 import profileRouter from '../routes/profile.routes';
 import goodRouter from '../routes/good.routes'
