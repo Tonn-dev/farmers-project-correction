@@ -2,13 +2,6 @@ import sequelize from '../models/index' // import sequelize instance;
 import { DataTypes } from 'sequelize';
 // Test the database connection
 
-sequelize.authenticate()
-.then(() => {
-  console.log('Connection to the database has been established successfully.👏');
-})
-.catch(() => {
-  console.log('Unable to connect to the database:💔');
-});
 
 // DataTypes is now imported directly from sequelize above
 // 1. Role model

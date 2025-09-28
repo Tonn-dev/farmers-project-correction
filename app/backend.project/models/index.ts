@@ -12,4 +12,13 @@ const sequelize = new Sequelize({
     port: Number(process.env.DB_PORT!),
     dialect: 'postgres',
 });
+
+sequelize.authenticate()
+.then(() => {
+  console.log('Connection to the database has been established successfully.👏');
+})
+.catch(() => {
+  console.log('Unable to connect to the database:💔');
+});
+
 export default sequelize;
