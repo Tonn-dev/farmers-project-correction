@@ -17,11 +17,11 @@ router .post('/request-email-change', async (req, res) => {
     const {userId,currentPassword,newEmail} = req.body; // Assuming the request body contains the user ID,currentPassword,newEmail  
 
     try {
-        await requestEmailChange(userId, newEmail,currentPassword);
+        await requestEmailChange(userId, currentPassword,newEmail,);
         res.status(200).json({ message: 'Verification email sent to new address' });
     } catch (error) {
         console.error('Error requesting email change:', error);
-        res.status(500).json({ message: 'Internal Server Error' });
+        res.status(500).json({ message: 'Internal Server Error while requesting for email change' });
     }
 });
 // Route to verify email change

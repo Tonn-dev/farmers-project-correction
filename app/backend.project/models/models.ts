@@ -190,9 +190,3 @@ export {
   Purchase,
   Message
 };
-// Sync the model with the database
-User.sync({ alter: true }) // This will update the table structure if it has changed
-Role.sync({ alter: true })
-Profile.sync({ alter: true })
-Good.sync({ alter: true })
-Inspect.sync({ alter: true })
